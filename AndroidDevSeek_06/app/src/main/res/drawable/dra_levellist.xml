@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/ic_sample"
+        android:maxLevel="2"
+        android:minLevel="2"/>
+
+    <item android:drawable="@mipmap/ic_launcher"
+        android:maxLevel="1"
+        android:minLevel="1"
+        />
+
+</level-list>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/ic_sample"
+    android:scaleHeight="0%"
+    android:scaleWidth="0%"
+    android:scaleGravity="center">
+
+</scale>
