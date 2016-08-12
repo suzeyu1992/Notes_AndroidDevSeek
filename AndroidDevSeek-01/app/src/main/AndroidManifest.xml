@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.szysky.note.androiddevseek_01">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SecondActivity" />
+
+        <activity android:name=".launchmode.ModeSingleInstanceAct"
+            android:launchMode="singleInstance"/>
+
+        <activity android:name=".launchmode.ModeSingleTaskAct"
+            android:launchMode="singleTask"
+            android:taskAffinity=".nishibendan"
+            />
+
+        <activity android:name=".launchmode.ModeSingleTopAct"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".launchmode.ModeStandardAct" />
+
+        <activity android:name=".intentfilter.FilterAct">
+            <intent-filter>
+                <action android:name="com.test1"/>
+                <action android:name="com.test2"/>
+
+                <category android:name="com.category1"/>
+                <category android:name="com.category2"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="audio/plain" android:scheme="http"/>
+            </intent-filter>
+
+        </activity>
+    </application>
+
+</manifest>

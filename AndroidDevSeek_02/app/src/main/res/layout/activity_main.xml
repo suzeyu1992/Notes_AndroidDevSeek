@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.szysky.note.androiddevseek_02.MainActivity">
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转测试开启多进程"
+         />
+
+    <Button
+        android:id="@+id/btn_serializable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serialzable序列化测试"
+        />
+
+    <Button
+        android:id="@+id/btn_parcelable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parcelable序列化测试"
+        />
+
+    <Button
+        android:id="@+id/btn_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用Messenger进程间通信测试"
+        />
+
+    <Button
+        android:id="@+id/btn_aidl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用AIDL进程间通信测试"
+        />
+
+    <Button
+        android:id="@+id/btn_provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用Provider进程间通信测试"
+        />
+
+    <Button
+        android:id="@+id/btn_socket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用Socket进程间通信测试"
+        />
+
+
+</LinearLayout>

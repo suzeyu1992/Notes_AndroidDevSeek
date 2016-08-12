@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.szysky.note.androiddevseek_02">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!--为连接AIDL的服务自定义出一个新的权限-->
+    <permission
+        android:name="com.szysky.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal" />
+    <!--添加上面自定义的权限-->
+    <uses-permission android:name="com.szysky.permission.ACCESS_BOOK_SERVICE" />
+
+
+    <!--为Provider连接添加权限-->
+    <uses-permission android:name="com.szysky.PROVIDER" />
+
+    <!--Socket通信额外需要的线程-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mulprocess.SecondActivity"
+            android:process=":remote" />
+        <activity
+            android:name=".mulprocess.ThirdActivity"
+            android:process="com.szysky.new" />
+
+
+        <!--**************************************************************-->
+        <!--注册Messenger的服务端service-->
+        <service
+            android:name=".message.MessengerService"
+            android:process="com.szysky.test" />
+        <!--注册Messenger的客户端-->
+        <activity android:name=".message.MessengerActivity" />
+
+        <!--**************************************************************-->
+        <!--注册AIDL的服务端service-->
+        <service
+            android:name=".aidl.BookManagerService"
+            android:process=":remote" />
+        <!--注册AIDL的客户端-->
+        <activity android:name=".aidl.BookMangerActivity" />
+        <!--**************************************************************-->
+
+        <!--内容提供者-->
+        <provider
+            android:name=".provider.BookProvider"
+            android:authorities="com.szysky.note.androiddevseek_02.provider"
+            android:permission="com.szysky.PROVIDER"
+            android:process=":provider" />
+        <activity android:name=".provider.ProviderActivity" />
+
+
+        <!--**************************************************************-->
+
+        <!--Socket使用跨进程-->
+        <activity android:name=".socket.SocketActivity"/>
+        <service android:name=".socket.TCPServerService"/>
+
+    </application>
+
+</manifest>
