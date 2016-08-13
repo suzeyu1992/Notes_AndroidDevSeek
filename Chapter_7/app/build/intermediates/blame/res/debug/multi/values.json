@@ -1,0 +1,226 @@
+[
+    {
+        "outputFile": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/colors.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 105,
+                        "endColumn": 45,
+                        "endOffset": 146
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 101,
+                    "endColumn": 48,
+                    "endOffset": 145
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 48,
+                        "endOffset": 100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 254,
+                    "endColumn": 46,
+                    "endOffset": 296
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 46,
+                        "endOffset": 98
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 301,
+                    "endColumn": 52,
+                    "endOffset": 349
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 103,
+                        "endColumn": 52,
+                        "endOffset": 151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 354,
+                    "endColumn": 60,
+                    "endOffset": 410
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 208,
+                        "endColumn": 60,
+                        "endOffset": 264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 415,
+                    "endColumn": 51,
+                    "endOffset": 462
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 156,
+                        "endColumn": 51,
+                        "endOffset": 203
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 467,
+                    "endLine": 15,
+                    "endColumn": 12,
+                    "endOffset": 753
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 196,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 758,
+                    "endLine": 18,
+                    "endColumn": 12,
+                    "endOffset": 913
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 527,
+                        "endLine": 22,
+                        "endColumn": 12,
+                        "endOffset": 684
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 918,
+                    "endLine": 23,
+                    "endColumn": 12,
+                    "endOffset": 1128
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 727,
+                        "endLine": 29,
+                        "endColumn": 12,
+                        "endOffset": 941
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1133,
+                    "endLine": 29,
+                    "endColumn": 12,
+                    "endOffset": 1408
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 949,
+                        "endLine": 36,
+                        "endColumn": 12,
+                        "endOffset": 1229
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1413,
+                    "endLine": 33,
+                    "endColumn": 12,
+                    "endOffset": 1575
+                },
+                "from": {
+                    "file": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 1237,
+                        "endLine": 41,
+                        "endColumn": 12,
+                        "endOffset": 1402
+                    }
+                }
+            }
+        ]
+    }
+]

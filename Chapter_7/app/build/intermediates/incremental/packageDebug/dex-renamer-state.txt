@@ -1,0 +1,7 @@
+#Sat Aug 13 17:43:26 CST 2016
+base.0=/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_1ef37df3849826aaf34ae5bde9ccde1c56ec5660
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3e62992cbf233bd79e35bc84d981ece1800aa176/classes.dex
+base.1=/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3e62992cbf233bd79e35bc84d981ece1800aa176
+file.0=/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_1ef37df3849826aaf34ae5bde9ccde1c56ec5660/classes.dex

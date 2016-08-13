@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="21"
+    density="xxhdpi"
+    format="8"
+    timestamp="114631229568659"
+    token="-4115852515779395436"
+    verifier="COMPATIBLE" >
+
+    <task
+        name="javac"
+        duration="45" />
+    <task
+        name="instant-run-dex"
+        duration="301" />
+    <task
+        name="instant-run-transform"
+        duration="14" />
+    <task
+        name="verifier"
+        duration="1" />
+
+    <artifact
+        location="/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
+
+    <build
+        timestamp="114574410730295"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="114615225573238" >
+        <artifact
+            location="/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
+    <build
+        timestamp="114631229568659"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+
+</instant-run>

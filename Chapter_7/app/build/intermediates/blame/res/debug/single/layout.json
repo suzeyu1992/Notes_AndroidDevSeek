@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/activity_test.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/activity_test.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/content_list_item.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/content_list_item.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/demo_1.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/demo_1.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/content_layout.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/content_layout.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/layout/demo_2.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/layout/demo_2.xml"
+    }
+]

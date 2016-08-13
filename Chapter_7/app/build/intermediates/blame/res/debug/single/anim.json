@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/anim/anim_layout.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/anim/anim_layout.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/anim/exit_anim.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/anim/exit_anim.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/anim/enter_anim.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/anim/enter_anim.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/anim/translate.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/anim/translate.xml"
+    },
+    {
+        "merged": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/build/intermediates/res/merged/debug/anim/anim_item.xml",
+        "source": "/Users/suzeyu/Documents/workspace/notes/AndroidDevSeek/Chapter_7/app/src/main/res/anim/anim_item.xml"
+    }
+]
