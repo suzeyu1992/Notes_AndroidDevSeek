@@ -12,12 +12,15 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.TextView;
 
+import java.sql.Wrapper;
 import java.util.Objects;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -34,6 +37,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         iv_main.setOnClickListener(this);
         findViewById(R.id.btn_rotate3d).setOnClickListener(this);
         findViewById(R.id.btn_start_act).setOnClickListener(this);
+        findViewById(R.id.btn_add_width).setOnClickListener(this);
+
 
         //让背景自动变色
         bgDym(activity_main);
@@ -44,6 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Animator set = AnimatorInflater.loadAnimator(this, R.animator.property_anim);
         set.setTarget(iv_main);
         set.start();
+
     }
 
     private void properStartAnim(Object object) {
@@ -62,6 +68,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         animatorSet.setDuration(5*1000).start();
     }
 
+    /**
+     * 通过属性动画让背景实现呼吸灯的效果
+     */
     private void bgDym(View activity_main) {
         ObjectAnimator colorAnim = ObjectAnimator.ofInt(activity_main, "backgroundColor", 0xffffa000, 0xffffa0ff);
         colorAnim.setDuration(5000);
@@ -69,6 +78,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
         colorAnim.setRepeatCount(ValueAnimator.INFINITE);
         colorAnim.setRepeatMode(ValueAnimator.REVERSE);
         colorAnim.start();
+    }
+
+
+    /**
+     * 包装一个内部类, 可以扩展TextView的子类对width的属性做动画修改.
+     */
+    private static class ButtonWrapper{
+        private View mTarget;
+
+        public ButtonWrapper(View mTarget){this.mTarget = mTarget;}
+
+        public void setWidth(int width){
+            mTarget.getLayoutParams().width = width;
+            mTarget.requestLayout();
+        }
+
+        public int getWidth(){
+            return mTarget.getLayoutParams().width;
+        }
+
+
     }
 
     @Override
@@ -83,6 +113,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_start_act:
                 startActivity(new Intent(this, TestOpenActAnimationActivity.class));
                 overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+                break;
+
+
+            case R.id.btn_add_width:
+                ButtonWrapper buttonWrapper = new ButtonWrapper(findViewById(R.id.btn_add_width));
+                ObjectAnimator.ofInt(buttonWrapper, "width", 500).setDuration(5000).start();
                 break;
         }
     }
