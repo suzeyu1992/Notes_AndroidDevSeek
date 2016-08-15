@@ -20,6 +20,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
+import com.szysky.note.androiddevseek_07.window.WindowDemoActivity;
+
 import java.sql.Wrapper;
 import java.util.Objects;
 
@@ -38,6 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_rotate3d).setOnClickListener(this);
         findViewById(R.id.btn_start_act).setOnClickListener(this);
         findViewById(R.id.btn_add_width).setOnClickListener(this);
+        findViewById(R.id.btn_window).setOnClickListener(this);
 
 
         //让背景自动变色
@@ -119,6 +122,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_add_width:
                 ButtonWrapper buttonWrapper = new ButtonWrapper(findViewById(R.id.btn_add_width));
                 ObjectAnimator.ofInt(buttonWrapper, "width", 500).setDuration(5000).start();
+                break;
+
+
+            case R.id.btn_window:
+                startActivity(new Intent(getApplicationContext(), WindowDemoActivity.class));
                 break;
         }
     }
