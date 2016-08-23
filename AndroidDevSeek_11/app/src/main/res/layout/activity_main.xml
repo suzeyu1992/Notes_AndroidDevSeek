@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.szysky.note.androiddevseek_11.MainActivity">
+
+    <Button
+        android:id="@+id/btn_serial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发起AsyncTask的串行请求" />
+
+    <Button
+        android:text="发起AsyncTask的并行请求"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_concurrent" />
+
+    <Button
+        android:text="发起IntentService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_send_intentserivice" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button6" />
+
+
+</LinearLayout>
