@@ -131,4 +131,27 @@ public class ImageLoader {
     }
 
 
+    /**
+     *  添加bitmap对象到内存缓存中
+     * @param key   根据图片的url生成的32md5值
+     * @param bitmap    需要缓存的bitmap对象
+     */
+    private void addBitmapToMemoryCache(String key, Bitmap bitmap){
+        // 如果内存缓存中不存在, 那么才进行添加的动作
+        if (null == getBitmapFromMemoryCache(key)){
+            mMemoryCache.put(key, bitmap);
+        }
+    }
+
+
+    /**
+     *  根据key值获取在内存缓存中保存的bitmap
+     * @param key 根据图片的url生成的32md5值
+     * @return  如果内存缓存中有对应的值, 那么就返回bitmap, 没有返回值就为null
+     */
+    private Bitmap getBitmapFromMemoryCache(String key){
+        return mMemoryCache.get(key);
+    }
+
+
 }
