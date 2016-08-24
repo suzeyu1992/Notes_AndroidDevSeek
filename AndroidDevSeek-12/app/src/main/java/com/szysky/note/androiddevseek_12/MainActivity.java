@@ -17,6 +17,8 @@ import com.szysky.note.androiddevseek_12.util.MyBitmapLoadUtil;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,8 +37,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+        String key = keyFormUrl("www");
+        Log.e(TAG, "onCreate: md5=" );
+
+
+
+
     }
 
+    /**
+     *  接收一个url地址, 对其转换成md5值并返回
+     *   转成一个32md5值
+     */
+    public String keyFormUrl(String url){
+        String cacheKey;
+        try {
+            MessageDigest mDigest = MessageDigest.getInstance("MD5");
+            mDigest.update(url.getBytes());
+            cacheKey = bytesToHexString(mDigest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    private String bytesToHexString(byte[] bytes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < bytes.length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1){
+                stringBuilder.append('0');
+            }
+            stringBuilder.append(hex);
+        }
+        return stringBuilder.toString();
+    }
 
     @Override
     public void onClick(View v) {
