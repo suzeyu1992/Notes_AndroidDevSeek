@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.btn_load).setOnClickListener(this);
+        findViewById(R.id.btn_load_normal).setOnClickListener(this);
+        findViewById(R.id.btn_load_efficient).setOnClickListener(this);
         iv_main = (ImageView) findViewById(R.id.iv_main);
 
-        Bitmap bitmap = MyBitmapLoadUtil.decodeFixedSizeForResource(getResources(), R.mipmap.ic_big_pic, 1200, 600);
-        iv_main.setImageBitmap(bitmap);
+
 
     }
 
@@ -41,10 +41,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_load:
-                // 检测自定义加载图片工具类是否好使
+            case R.id.btn_load_normal:
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_big_pic);
-                Bitmap.Config config = bitmap.getConfig();
+                iv_main.setImageBitmap(bitmap);
+
+                break;
+            case R.id.btn_load_efficient:
+                // 检测自定义加载图片工具类是否好使
+                Bitmap bitmap2 = MyBitmapLoadUtil.decodeFixedSizeForResource(getResources(), R.mipmap.ic_big_pic, 600, 300);
+                iv_main.setImageBitmap(bitmap2);
                 break;
         }
     }
