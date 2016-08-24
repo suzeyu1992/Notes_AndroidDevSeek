@@ -5,11 +5,24 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Looper;
 import android.os.StatFs;
 import android.util.LruCache;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Author :  suzeyu
@@ -24,6 +37,8 @@ public class ImageLoader {
      * 默认磁盘缓存的大小值
      */
     private static final long DISK_CACHE_SIZE = 1024 * 1024 * 50;
+    private static final int DISK_CACHE_IDEX = 0;
+    private static final int IO_BUFFER_SIZE = 8 * 1024;
 
     /**
      * 本类实例对象
@@ -130,7 +145,7 @@ public class ImageLoader {
         return (long) statFs.getBlockSize() *  (long) statFs.getAvailableBlocks();
     }
 
-
+    /**********************给内存缓存添加操作方法**********************/
     /**
      *  添加bitmap对象到内存缓存中
      * @param key   根据图片的url生成的32md5值
@@ -144,6 +159,7 @@ public class ImageLoader {
     }
 
 
+
     /**
      *  根据key值获取在内存缓存中保存的bitmap
      * @param key 根据图片的url生成的32md5值
@@ -151,6 +167,143 @@ public class ImageLoader {
      */
     private Bitmap getBitmapFromMemoryCache(String key){
         return mMemoryCache.get(key);
+    }
+
+
+
+    /**********************给磁盘缓存添加操作方法**********************/
+    private Bitmap loadBitmapFromHttp(String url, int reqWidth, int reqHeight) throws IOException{
+        // 因为从网络下载, 不允许操作线程是主线正
+        if (Looper.myLooper() == Looper.getMainLooper()){
+            throw  new RuntimeException("不能再主线程中发起网络请求");
+        }
+
+        // 因为本实例 是先下载先保存在磁盘, 然后从磁盘获取 所以如果磁盘无效那么就停止.
+        if (mDiskLruCache == null){
+            return null;
+        }
+
+        // 根据url算出md5值
+        String key = keyFormUrl(url);
+
+        // 开始对磁盘缓存的一个存储对象进行操作
+        DiskLruCache.Editor editor = mDiskLruCache.edit(key);
+        // 如果==null说明这个editor对象正在被使用
+        if (null != editor){
+            OutputStream outputStream = editor.newOutputStream(DISK_CACHE_IDEX);
+            if (downLoadUrlToStream(url, outputStream)){
+                //加载成功进行 提交操作
+                editor.commit();
+            }else{
+                // 进行数据回滚
+                editor.abort();
+            }
+            mDiskLruCache.flush();
+        }
+
+        // 从磁盘缓存获取, 并在内部添加到内存中去. 
+        return loadBitmapFromDiskCache(url, reqWidth, reqHeight);
+
+    }
+
+
+    private Bitmap loadBitmapFromDiskCache(String url, int reqWidth, int reqHeight) throws IOException {
+        // 因为从网络下载, 不允许操作线程是主线正
+        if (Looper.myLooper() == Looper.getMainLooper()){
+            throw  new RuntimeException("不能再主线程中发起网络请求");
+        }
+        if (mDiskLruCache == null){
+            return null;
+        }
+
+        Bitmap bitmap = null;
+        String key = keyFormUrl(url);
+        DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
+        if (null != snapshot){
+            FileInputStream fileInputStream = (FileInputStream) snapshot.getInputStream(DISK_CACHE_IDEX);
+            // 由于文件流属于一种有序的文件流, 所以无法进行两次decode. 这里通过获得文件描述符的方法解决
+            FileDescriptor fd = fileInputStream.getFD();
+            bitmap = ImageCompression.decodeFixedSizeForFileDescription(fd, reqWidth, reqHeight);
+
+            if (bitmap != null){
+                addBitmapToMemoryCache(key, bitmap);
+            }
+        }
+
+
+        return null;
+    }
+
+    /**
+     *  通过一个网络路径来下载文件
+     * @param urlStr           要下载的地址
+     * @param outputStream  需要把下载的流写入到传入的此流中
+     * @return              是写入成功
+     */
+    public  boolean downLoadUrlToStream(String urlStr, OutputStream outputStream) {
+        HttpURLConnection urlConnection = null;
+        BufferedInputStream in = null;
+        BufferedOutputStream out = null;
+
+        try {
+            URL url = new URL(urlStr);
+            urlConnection = (HttpURLConnection) url.openConnection();
+
+            // 获得网络连接获得的输入流
+            in = new BufferedInputStream(urlConnection.getInputStream(), IO_BUFFER_SIZE);
+
+            // 创建Buffer并指定要写入的磁盘缓存输出流
+            out = new BufferedOutputStream(outputStream, IO_BUFFER_SIZE);
+
+            int b;
+            // 开始把输入流的数据写入到磁盘缓存输出流
+            while ((b = in.read()) != -1){
+                out.write(b);
+            }
+
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if (urlConnection == null) {
+                urlConnection.disconnect();
+            }
+            CloseUtil.close(in);
+            CloseUtil.close(out);
+
+        }
+
+        return false;
+    }
+
+
+    /**
+     *  接收一个url地址, 对其转换成md5值并返回
+     *   转成一个32md5值
+     */
+    public String keyFormUrl(String url){
+        String cacheKey;
+        try {
+            MessageDigest mDigest = MessageDigest.getInstance("MD5");
+            mDigest.update(url.getBytes());
+            cacheKey = bytesToHexString(mDigest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    private String bytesToHexString(byte[] bytes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < bytes.length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1){
+                stringBuilder.append('0');
+            }
+            stringBuilder.append(hex);
+        }
+        return stringBuilder.toString();
     }
 
 
