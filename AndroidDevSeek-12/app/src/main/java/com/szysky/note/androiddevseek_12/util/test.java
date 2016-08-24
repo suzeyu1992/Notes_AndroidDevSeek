@@ -58,7 +58,7 @@ public class test {
         String[] temp1 = data.split("\\|");
 
         for(int i = 0; i < temp1.length; ++i) {
-            if(!temp1[i].contains(".")) {
+            if(!temp1[i].contains("=")) {
                 return new Hashtable();
             }
 
