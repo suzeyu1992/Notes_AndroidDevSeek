@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.szysky.note.androiddevseek_12.load.ImageLoader;
 import com.szysky.note.androiddevseek_12.util.MyBitmapLoadUtil;
 
 import java.io.BufferedReader;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private ImageView iv_main;
     private byte[] bytes;
+    private ImageLoader mImageLoader;
 
 
     @Override
@@ -37,11 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        String key = keyFormUrl("www");
-        Log.e(TAG, "onCreate: md5=" );
 
 
 
+        mImageLoader = ImageLoader.getInstance(getApplicationContext());
 
     }
 
@@ -77,8 +78,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_load_normal:
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_big_pic);
-                iv_main.setImageBitmap(bitmap);
+//                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_big_pic);
+//                iv_main.setImageBitmap(bitmap);
+                final String url = "http://img9.dzdwl.com/img/11543935W-1.jpg";
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Bitmap bitmap = mImageLoader.loadBitmap(url, 300, 300);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                iv_main.setImageBitmap(bitmap);
+                            }
+                        });
+                    }
+                }).start();
+
 
                 break;
             case R.id.btn_load_efficient:

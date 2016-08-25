@@ -63,4 +63,17 @@ public class MyBitmapLoadUtil {
         return inSampleSize;
 
     }
+
+
+    private static String bytesToHexString(byte[] bytes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < bytes.length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1){
+                stringBuilder.append('0');
+            }
+            stringBuilder.append(hex);
+        }
+        return stringBuilder.toString();
+    }
 }
