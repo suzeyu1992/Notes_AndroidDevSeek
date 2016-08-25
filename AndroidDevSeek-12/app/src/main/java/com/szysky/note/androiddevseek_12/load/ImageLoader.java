@@ -153,12 +153,15 @@ public class ImageLoader {
             sThreadFactory
 
     );
+    private int measuredWidth;
+    private int measuredHeight;
+    private ImageView mPrepareImageView;
 
 
     /**
      * 返回本类的单例实例
      */
-    public static ImageLoader getInstance(Context context) {
+    public static ImageLoader build(Context context) {
         if (ourInstance == null) {
             synchronized (ImageLoader.class) {
                 if (ourInstance == null) {
@@ -196,6 +199,7 @@ public class ImageLoader {
         if (getUsableSpace(diskCacheDir) > DISK_CACHE_SIZE) {
             // 利用open函数来构建磁盘缓存对象
             try {
+                Log.d(TAG, "设置磁盘缓存成功--> 路径为:"+diskCacheDir.getPath());
                 mDiskLruCache = DiskLruCache.open(diskCacheDir, 1, 1, DISK_CACHE_SIZE);
                 mIsDiskLruCacheCreated = true;
             } catch (IOException e) {
@@ -204,6 +208,27 @@ public class ImageLoader {
         }
 
 
+    }
+
+    public <T extends ImageView> ImageLoader setImageView(T imageView){
+        measuredWidth = imageView.getMeasuredWidth();
+        measuredHeight = imageView.getMeasuredHeight();
+        mPrepareImageView = (T) imageView;
+
+        return this;
+    }
+
+    public void url(String url){
+        if (mPrepareImageView == null) {
+            throw new IllegalStateException("没有指定要加载的控件");
+        }
+
+        if (measuredHeight == 0 || measuredWidth == 0){
+            measuredHeight = 500;
+            measuredWidth = 500;
+        }
+
+        bindBitmap(url, mPrepareImageView, measuredWidth, measuredHeight);
     }
 
 
@@ -218,7 +243,8 @@ public class ImageLoader {
     public Bitmap loadBitmap(String uriStr, int reqWidth, int reqHeight) {
         long entry = System.currentTimeMillis();
         // 1.从内存中读取
-        Bitmap bitmap = getBitmapFromMemoryCache(uriStr);
+        String key = keyFormUrl(uriStr);
+        Bitmap bitmap = getBitmapFromMemoryCache(key);
         if (bitmap != null) {
             Log.d(TAG, "loadBitmap --> 图片从内存中加载成功 uri=" + uriStr + "\r\n消耗时间=" + (System.currentTimeMillis() - entry) + "s");
             return bitmap;

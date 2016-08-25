@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        mImageLoader = ImageLoader.getInstance(getApplicationContext());
+//        mImageLoader = ImageLoader.build(getApplicationContext());
 
     }
 
@@ -81,18 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_big_pic);
 //                iv_main.setImageBitmap(bitmap);
                 final String url = "http://img9.dzdwl.com/img/11543935W-1.jpg";
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        final Bitmap bitmap = mImageLoader.loadBitmap(url, 300, 300);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                iv_main.setImageBitmap(bitmap);
-                            }
-                        });
-                    }
-                }).start();
+
+                ImageLoader.build(getApplicationContext())
+                        .setImageView(iv_main)
+                        .url(url);
 
 
                 break;
