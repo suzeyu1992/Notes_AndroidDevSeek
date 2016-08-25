@@ -153,6 +153,7 @@ public class ImageLoader {
             sThreadFactory
 
     );
+
     private int measuredWidth;
     private int measuredHeight;
     private ImageView mPrepareImageView;
@@ -187,6 +188,7 @@ public class ImageLoader {
                 return value.getRowBytes() * value.getHeight() / 1024;
             }
         };
+        Log.i(TAG, "设置内存缓存成功--> 大小为:"+cacheSize/1024+"MB");
 
         // 获得磁盘缓存的路径
         File diskCacheDir = getDiskCacheDir(mContext, "bitmap");
@@ -199,7 +201,7 @@ public class ImageLoader {
         if (getUsableSpace(diskCacheDir) > DISK_CACHE_SIZE) {
             // 利用open函数来构建磁盘缓存对象
             try {
-                Log.d(TAG, "设置磁盘缓存成功--> 路径为:"+diskCacheDir.getPath());
+                Log.i(TAG, "设置磁盘缓存成功--> 路径为:"+diskCacheDir.getPath());
                 mDiskLruCache = DiskLruCache.open(diskCacheDir, 1, 1, DISK_CACHE_SIZE);
                 mIsDiskLruCacheCreated = true;
             } catch (IOException e) {
@@ -210,6 +212,9 @@ public class ImageLoader {
 
     }
 
+    /**
+     *  实现链式调用的 第一步
+     */
     public <T extends ImageView> ImageLoader setImageView(T imageView){
         measuredWidth = imageView.getMeasuredWidth();
         measuredHeight = imageView.getMeasuredHeight();
@@ -218,6 +223,9 @@ public class ImageLoader {
         return this;
     }
 
+    /**
+     *  实现链式调用的 第二步 并且也是异步开始
+     */
     public void url(String url){
         if (mPrepareImageView == null) {
             throw new IllegalStateException("没有指定要加载的控件");
@@ -229,6 +237,10 @@ public class ImageLoader {
         }
 
         bindBitmap(url, mPrepareImageView, measuredWidth, measuredHeight);
+        // 清空操作
+        measuredHeight = 0;
+        measuredWidth = 0;
+        mPrepareImageView = null;
     }
 
 
@@ -325,7 +337,11 @@ public class ImageLoader {
         final String cachePath;
 
         if (externalIsAlive) {
-            cachePath = context.getExternalCacheDir().getPath();
+            File externalCacheDir = context.getExternalCacheDir();
+            if (externalCacheDir == null){
+               cachePath = Environment.getExternalStorageDirectory().getPath();
+            }else {cachePath =  externalCacheDir.getPath();
+            }
         } else {
             cachePath = context.getCacheDir().getPath();
         }
