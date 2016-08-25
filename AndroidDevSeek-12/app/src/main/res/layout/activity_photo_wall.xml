@@ -14,7 +14,7 @@
         android:horizontalSpacing="3dp"
         android:verticalSpacing="3dp"
         android:listSelector="@android:color/transparent"
-        android:numColumns="3"
+        android:numColumns="2"
         android:stretchMode="columnWidth"
         />
 
