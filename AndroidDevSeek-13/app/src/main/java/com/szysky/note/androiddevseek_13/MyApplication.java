@@ -1,6 +1,8 @@
 package com.szysky.note.androiddevseek_13;
 
 import android.app.Application;
+import android.content.Context;
+
 
 /**
  * Author :  suzeyu
@@ -15,5 +17,11 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MyCrashHandler.getsInstance().init(getApplicationContext());
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+//        ShadowMultiDex.install(this);
     }
 }
