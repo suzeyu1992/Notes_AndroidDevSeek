@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_main"
+    android:orientation="vertical">
+
+
+
+        <include
+            android:id="@+id/hah"
+            layout="@layout/layout_titlebar" />
+
+
+
+    <ViewStub
+        android:id="@+id/stub_import"
+        android:inflatedId="@+id/stin_root"
+        android:layout="@layout/layout_stubview"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+</LinearLayout>
