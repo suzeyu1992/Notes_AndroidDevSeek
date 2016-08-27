@@ -15,7 +15,7 @@
 *.dex
 
 # Java class files
-*.class
+# *.class
 
 # Generated files
 antLauncher/bin
@@ -25,5 +25,4 @@ antLauncher/gen
 */local.properties
 
 # Log Files
-*.log 
-
+*.log
