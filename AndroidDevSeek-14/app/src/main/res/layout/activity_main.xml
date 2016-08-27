@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.szysky.note.androiddevseek_14.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        />
+<Button
+    android:id="@+id/btn_jni2java"
+    android:text="JNI调用java方法弹出Toast"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
 </RelativeLayout>
