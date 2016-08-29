@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 testANR();
             }
-        }).start();
+        });//.start();
         SystemClock.sleep(10);
         initView();
     }
